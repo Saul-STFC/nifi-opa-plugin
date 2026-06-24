@@ -13,9 +13,9 @@ services:
       - '389:389'
       - '636:636'
     expose:
-      - "1389:1389"
-      - '389:389'
-    image: "bitnami/openldap:2.5.18"
+      - "13899"
+      - '389'
+    image: "bitnamilegacy/openldap:2.5.18-debian-12-r13"
     environment:
       LDAP_ADMIN_USERNAME: 'admin'
       LDAP_ADMIN_PASSWORD: 'adminpassword'
