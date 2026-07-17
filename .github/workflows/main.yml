@@ -30,6 +30,7 @@ jobs:
         TAG: ${{ github.ref_name }}
       run: |
         gh release create "$TAG" \
+        --verify-tag \
           --title "Release $TAG" \
           --notes "" \
           ./authorizer/target/opa-authorizer.nar
