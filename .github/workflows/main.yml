@@ -24,26 +24,12 @@ jobs:
       run: |
         mvn install --file ./authorizer/pom.xml
       
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 #v1.1.4 (UNMAINTAINED)
-        # TODO: Switch to different action or use gh cli 
+    - name: Create and upload release
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-
-    - name: Upload Plugin Release
-      id: upload-plugin-release
-      uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2 (UNMAINTRAINED)
-        # TODO: Switch to different action or use gh cli
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./authorizer/target/opa-authorizer.nar
-        asset_name: opa-authorizer.nar
-        asset_content_type: application/octet-stream
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG: ${{ github.ref_name }}
+      run: |
+        gh release create "$TAG" \
+          --title "Release $TAG" \
+          --notes "" \
+          ./authorizer/target/opa-authorizer.nar
