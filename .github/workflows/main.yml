@@ -32,5 +32,4 @@ jobs:
         gh release create "$TAG" \
           --verify-tag \
           --title "Release $TAG" \
-          --notes "" \
           ./authorizer/target/opa-authorizer.nar
