@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class OPAResponse {
-	
+
     private boolean allowed;
     private boolean resourceNotFound;
     private boolean dumpCache;
@@ -22,11 +22,11 @@ public class OPAResponse {
     	this.dumpCache = dumpCache;
     	this.message = message;
     }
-    
+
     public boolean allowed() {
         return allowed;
     }
-    
+
     public boolean resourceNotFound() {
         return resourceNotFound;
     }
@@ -34,7 +34,7 @@ public class OPAResponse {
     public boolean dumpCache() {
     	return dumpCache;
     }
-    
+
     public String message() {
     	return message;
     }

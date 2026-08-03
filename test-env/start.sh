@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "### Starting test environment..."
 docker compose up -d
 sleep 5s

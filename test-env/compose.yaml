@@ -1,3 +1,4 @@
+---
 version: '2'
 
 networks:
@@ -42,11 +43,11 @@ services:
     environment:
       AUTH: ldap
       KEYSTORE_PATH: /opt/certs/keystore.jks
-      KEYSTORE_TYPE: JKS 
+      KEYSTORE_TYPE: JKS
       KEYSTORE_PASSWORD: bMdX5zdxA011zdDuMxqen+LjyQAacu9Xpwvk0/SUuFw
       TRUSTSTORE_PATH: /opt/certs/truststore.jks
       TRUSTSTORE_PASSWORD: beMkAJaKVJItosXYKfjspeFH1To7LvpwxHbrTga4lOg
-      TRUSTSTORE_TYPE: JKS 
+      TRUSTSTORE_TYPE: JKS
       LDAP_AUTHENTICATION_STRATEGY: 'SIMPLE'
       LDAP_MANAGER_DN: 'cn=admin,dc=example,dc=org'
       LDAP_MANAGER_PASSWORD: 'adminpassword'
@@ -65,8 +66,8 @@ services:
     image: openpolicyagent/opa:0.67.0
     ports:
       - 8181:8181
-    command: 
-      - "run" 
+    command:
+      - "run"
       - "--server"
       - "/policies/nifi_rules.rego"
 

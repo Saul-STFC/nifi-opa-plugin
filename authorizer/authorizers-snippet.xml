@@ -1,8 +1,8 @@
-<!-- Currently a work-around overriding the normal managed authorizer entry -->
 <authorizer>
-    <identifier>managed-authorizer</identifier>
+    <identifier>opa-authorizer</identifier>
     <class>org.nifiopa.nifiopa.OpaAuthorizer</class>
     <property name="CACHE_TIME_SECS">30</property>
     <property name="CACHE_MAX_ENTRY_COUNT">100</property>
     <property name="OPA_URI">http://opa:8181/</property>
+    <property name="OPA_RULE_HEAD">nifi/allow</property>
 </authorizer>

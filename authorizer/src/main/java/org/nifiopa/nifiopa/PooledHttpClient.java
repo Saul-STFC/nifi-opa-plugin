@@ -160,4 +160,3 @@ public final class PooledHttpClient implements HTTPClient {
         }
     }
 }
-

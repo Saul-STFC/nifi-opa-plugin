@@ -314,7 +314,7 @@
 
             NOTE: The group must exist before starting NiFi.
     -->
-    
+
     <accessPolicyProvider>
         <identifier>file-access-policy-provider</identifier>
         <class>org.apache.nifi.authorization.FileAccessPolicyProvider</class>
@@ -334,7 +334,7 @@
 
         - Access Policy Provider - The identifier for an Access Policy Provider defined above.
     -->
-    
+
     <authorizer>
         <identifier>managed-authorizer</identifier>
         <class>org.apache.nifi.authorization.StandardManagedAuthorizer</class>
