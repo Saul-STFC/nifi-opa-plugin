@@ -23,7 +23,7 @@
       <groupId>com.styra</groupId>
       <artifactId>opa</artifactId>
       <version>2.1.1</version>
-      <!-- Exclude JUnit dependencies which are defined with runtime scope in com.styra:opa 
+      <!-- Exclude JUnit dependencies which are defined with runtime scope in com.styra:opa -->
       <exclusions>
         <exclusion>
           <groupId>org.junit.jupiter</groupId>
