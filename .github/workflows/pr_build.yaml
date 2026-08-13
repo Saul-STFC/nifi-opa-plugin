@@ -51,11 +51,3 @@ jobs:
             --file authorizer/pom.xml \
             -P${{ matrix.nifi-profile }} \
             clean verify
-
-      - name: Upload NAR Artifact
-        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
-        with:
-          name: opa-authorizer-${{ matrix.nifi-profile }}.nar
-          path: authorizer/target/opa-authorizer.nar
-          retention-days: 5
-          if-no-files-found: error
