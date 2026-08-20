@@ -105,7 +105,7 @@ public class OpaAuthorizer implements Authorizer {
             logger.error("An error occurred while unmarshalling the OPA response.");
             return AuthorizationResult.denied("An error occurred while reading the OPA response.");
         }
-        // Cache invalidation belongs to this response only. 
+        // Cache invalidation belongs to this response only.
         // Do not store dumpCache as a shared state
         if (opaResponse.dumpCache()) {
             currentCache.clear();
@@ -209,4 +209,3 @@ public class OpaAuthorizer implements Authorizer {
         return value;
     }
 }
-

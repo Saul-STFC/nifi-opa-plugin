@@ -1,0 +1,53 @@
+---
+name: Build
+permissions: {}
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - nifi-profile: nifi-1.28.1
+            java-version: 11
+          - nifi-profile: nifi-2.6.0
+            java-version: 21
+          - nifi-profile: nifi-2.7.2
+            java-version: 21
+          - nifi-profile: nifi-2.9.0
+            java-version: 21
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@0f481fcb613427c0f801b606911222b5b6f3083a # v5.5.0
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: zulu
+          cache: maven
+
+      - name: Build with Maven
+        run: |
+          ./mvnw \
+            --batch-mode \
+            --no-transfer-progress \
+            --file authorizer/pom.xml \
+            -P${{ matrix.nifi-profile }} \
+            clean verify
