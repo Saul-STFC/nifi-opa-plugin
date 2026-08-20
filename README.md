@@ -31,7 +31,7 @@ This repository contains a plugin for Apache NiFi in order to add support for th
 For building the plugin in `/authorizer`.
 
 - [Java 11 JDK](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) (NiFi 1.x) or [Java 21 JDK](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html) (NiFi 2.x)
-- [Maven](https://maven.apache.org/download.cgi)
+- Maven, via the bundled `mvnw` wrapper (no separate install needed; the pinned version can be bumped in `.mvn/wrapper/maven-wrapper.properties`)
 
 ### Docker
 
@@ -43,16 +43,16 @@ For using the test environment in `/test-env`.
 
 ### Building the plugin
 
-To build the plugin go into the `/authorizer` folder and execute:
+To build the plugin execute the following from the repository root:
 
 ```bash
-mvn install
+./mvnw --file authorizer/pom.xml install
 ```
 
 This builds the `.nar`-plugin in the `/target` folder for the latest NiFi version. To target a specific version of NiFi use the corresponding maven profile.
 
 ```bash
-mvn install -Pnifi-1.28.1
+./mvnw --file authorizer/pom.xml install -Pnifi-1.28.1
 ```
 
 ### Using the plugin
@@ -106,9 +106,10 @@ After Apache NiFi is completely up, open the Apache NiFi UI: `https://localhost:
 
 You might login using one of those credentials:
 
-- Username: *User1*, Password: *password01*
-- Username: *User2*, Password: *password02*
-- Username: *User3*, Password: *password03*
+- Username: *user01*, Password: *password01*
+- Username: *user02*, Password: *password02*
+- Username: *user03*, Password: *password03*
+- Username: *user04*, Password: *password04*
 
 > [!NOTE]
 > To load a rebuild plugin you need to restart Apache NiFi.
